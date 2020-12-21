@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 // connect to mongoose database
 mongoose.connect(
-  // using mongodb atlas => online hosted database 
+  // using mongodb atlas => online hosted database
   "mongodb+srv://admin-calvin:test123@cluster0.vqqrs.mongodb.net/todolistDB",
   {
     useNewUrlParser: true,
@@ -156,6 +156,11 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3000, function () {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, function () {
   console.log("Server started on port 3000");
 });
